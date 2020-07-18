@@ -23,4 +23,13 @@ class Day extends Model
     protected $casts = [
         'date' => 'datetime:Y-m-d',
     ];
+
+
+    /**
+     * Get the groups for the day.
+     */
+    public function groups()
+    {
+        return $this->hasMany('App\Group');
+    }
 }
