@@ -12,6 +12,7 @@ class Item extends Model
      * @var array
      */
     protected $fillable = [
+        'group_id',
         'description',
     ];
 

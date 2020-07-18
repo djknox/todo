@@ -14,7 +14,7 @@
 
         <div class="card-body">
             @foreach($group->items as $item)
-            <div>
+            <div class="my-4">
                 {{ $item->description }}
             </div>
             @endforeach

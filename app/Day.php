@@ -36,11 +36,19 @@ class Day extends Model
     ];
 
     /**
-     * Get today or start a new day with fresh groups.
+     * Get the current day.
      */
-    public static function todayOrStartNewDay()
+    public static function today()
     {
-        $today = Day::firstWhere('date', today());
+        return Day::firstWhere('date', today());
+    }
+
+    /**
+     * Get the current day or start a new day with fresh groups.
+     */
+    public static function todayOrNew()
+    {
+        $today = Day::today();
 
         if ($today) {
             return $today;
@@ -66,7 +74,6 @@ class Day extends Model
             return $today;
         }
     }
-
 
     /**
      * Get the groups for the day.

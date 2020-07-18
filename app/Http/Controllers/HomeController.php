@@ -28,7 +28,7 @@ class HomeController extends Controller
         // $today = Day::firstOrCreate([
         //     'date' => today(),
         // ]);
-        $today = Day::todayOrStartNewDay();
+        $today = Day::todayOrNew();
 
         return view('home', [
             'today' => $today,
