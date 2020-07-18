@@ -14,4 +14,12 @@ class Item extends Model
     protected $fillable = [
         'description',
     ];
+
+    /**
+     * Get the group that the item belongs to.
+     */
+    public function group()
+    {
+        return $this->belongsTo('App\Group');
+    }
 }

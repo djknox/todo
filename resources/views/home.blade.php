@@ -2,25 +2,24 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h1 class="text-center">
-                {{ $today->date->toFormattedDateString() }}
-            </h1>
+    <h1 class="text-xl text-center">
+        {{ $today->date->toFormattedDateString() }}
+    </h1>
 
-            <div class="flex flex-row">
-            @foreach($today->groups as $group)
-            <div class="card">
-                <div class="card-header">
-                    {{ $group->name }}
-                </div>
+    @foreach($today->groups as $group)
+    <div class="card">
+        <div class="card-header">
+            {{ $group->name }}
+        </div>
 
-                <div class="card-body">
-                </div>
+        <div class="card-body">
+            @foreach($group->items as $item)
+            <div>
+                {{ $item->description }}
             </div>
             @endforeach
-            </div>
         </div>
     </div>
+    @endforeach
 </div>
 @endsection

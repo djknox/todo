@@ -23,4 +23,12 @@ class Group extends Model
     {
         return $this->belongsTo('App\Day');
     }
+
+    /**
+     * Get the items that belong to the group.
+     */
+    public function items()
+    {
+        return $this->hasMany('App\Item');
+    }
 }
