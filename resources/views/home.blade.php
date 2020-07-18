@@ -19,6 +19,10 @@
             </div>
             @endforeach
         </div>
+        
+        <add-item-to-group
+            :group="{{ $group }}">
+        </add-item-to-group>
     </div>
     @endforeach
 </div>

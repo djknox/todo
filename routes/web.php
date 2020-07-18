@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
+
+Route::post('/groups/{group}/items', 'ItemController@store')->name('items.store');
