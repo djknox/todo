@@ -15,8 +15,14 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('day_id');
             $table->string('name')->nullable();
             $table->timestamps();
+
+            $table->foreign('day_id')
+                  ->references('id')
+                  ->on('days')
+                  ->onDelete('cascade');
         });
     }
 

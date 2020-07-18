@@ -15,8 +15,14 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('group_id');
             $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->foreign('group_id')
+                  ->references('id')
+                  ->on('groups')
+                  ->onDelete('cascade');
         });
     }
 
