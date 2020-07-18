@@ -8,13 +8,17 @@
                 {{ $today->date->toFormattedDateString() }}
             </h1>
 
+            <div class="flex flex-row">
+            @foreach($today->groups as $group)
             <div class="card">
                 <div class="card-header">
-                    {{ __('todo items') }}
+                    {{ $group->name }}
                 </div>
 
                 <div class="card-body">
                 </div>
+            </div>
+            @endforeach
             </div>
         </div>
     </div>

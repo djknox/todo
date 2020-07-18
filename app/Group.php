@@ -12,6 +12,7 @@ class Group extends Model
      * @var array
      */
     protected $fillable = [
+        'day_id',
         'name',
     ];
 

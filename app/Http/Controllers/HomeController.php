@@ -25,10 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $today = Day::firstOrCreate([
-            'date' => today(),
-        ]);
-        // $today = Day::latest()->first();
+        // $today = Day::firstOrCreate([
+        //     'date' => today(),
+        // ]);
+        $today = Day::todayOrStartNewDay();
 
         return view('home', [
             'today' => $today,

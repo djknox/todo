@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Group;
+
 class Day extends Model
 {
     /**
@@ -23,6 +25,47 @@ class Day extends Model
     protected $casts = [
         'date' => 'datetime:Y-m-d',
     ];
+
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'groups'
+    ];
+
+    /**
+     * Get today or start a new day with fresh groups.
+     */
+    public static function todayOrStartNewDay()
+    {
+        $today = Day::firstWhere('date', today());
+
+        if ($today) {
+            return $today;
+        }
+        else {
+            $today = Day::create([
+                'date' => today(),
+            ]);
+
+            $todoList = Group::create([
+                'day_id' => $today->id,
+                'name'   => 'todo items',
+            ]);
+            $foodList = Group::create([
+                'day_id' => $today->id,
+                'name'   => 'food',
+            ]);
+            $smokeList = Group::create([
+                'day_id' => $today->id,
+                'name'   => 'rx',
+            ]);
+
+            return $today;
+        }
+    }
 
 
     /**
