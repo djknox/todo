@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Day::class, function (Faker $faker) {
     return [
-        'date' => date($format = 'Y-m-d'),
+        'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
     ];
 });

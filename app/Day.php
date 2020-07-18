@@ -14,4 +14,13 @@ class Day extends Model
     protected $fillable = [
         'date',
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date' => 'datetime:Y-m-d',
+    ];
 }
