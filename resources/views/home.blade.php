@@ -7,19 +7,9 @@
     </h1>
 
     @foreach($today->groups as $group)
-    <div class="card">
-        <div class="card-header">
-            {{ $group->name }}
-        </div>
-
-        <div class="card-body">
-            @foreach($group->items as $item)
-            <div class="my-4">
-                {{ $item->description }}
-            </div>
-            @endforeach
-        </div>
-    </div>
+        <group-controller
+            :initial-group="{{ $group }}">
+        </group-controller>
     @endforeach
 </div>
 @endsection

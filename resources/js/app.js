@@ -19,7 +19,13 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+Vue.component('group-controller', require('./components/GroupController.vue').default);
+Vue.component('group-display', require('./components/GroupDisplay.vue').default);
+Vue.component('item-display', require('./components/ItemDisplay.vue').default);
+Vue.component('add-item-to-group', require('./components/AddItemToGroup.vue').default);
+Vue.component('item-delete', require('./components/ItemDelete.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
