@@ -4,6 +4,10 @@
             :item="item"
             v-on:item-deleted="itemDeleted">
         </item-delete>
+        <item-complete
+            :initial-item="item"
+            v-on:item-completed="itemCompleted">
+        </item-complete>
         <h3>
             {{ item.description }}
         </h3>
@@ -27,9 +31,10 @@
         },
         methods: {
             itemDeleted (response) {
-                this.group = response.group;
-
                 this.$emit('item-deleted', response);
+            },
+            itemCompleted (response) {
+                this.$emit('item-completed', response);
             },
         },
     }

@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::post('/groups/{group}/items', 'ItemController@store')->name('items.store');
 Route::delete('/items/{item}', 'ItemController@destroy')->name('items.destroy');
+Route::patch('/items/{item}', 'ItemController@update')->name('items.update');

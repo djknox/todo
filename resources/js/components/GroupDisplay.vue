@@ -10,6 +10,7 @@
                 :key="item.id"
                 :item="item"
                 v-on:item-deleted="refreshGroupFromResponse"
+                v-on:item-completed="refreshGroupFromResponse"
                 class="my-4">
             </item-display>
         

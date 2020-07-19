@@ -14,6 +14,16 @@ class Item extends Model
     protected $fillable = [
         'group_id',
         'description',
+        'completed',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'completed' => 'boolean',
     ];
 
     /**

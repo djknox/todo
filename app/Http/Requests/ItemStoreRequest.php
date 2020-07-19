@@ -25,6 +25,7 @@ class ItemStoreRequest extends FormRequest
     {
         return [
             'description' => 'nullable|string',
+            'completed'   => 'boolean',
         ];
     }
 }

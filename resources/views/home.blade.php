@@ -7,9 +7,11 @@
     </h1>
 
     @foreach($today->groups as $group)
-        <group-controller
+    <div class="card">
+        <group-display
             :initial-group="{{ $group }}">
-        </group-controller>
+        </group-display>
+    </div>
     @endforeach
 </div>
 @endsection
