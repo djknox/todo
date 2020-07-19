@@ -74,13 +74,20 @@ class ItemController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ItemStoreRequest  $request
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(ItemStoreRequest $request, Item $item)
     {
-        //
+        $item->update([
+            'completed' => $request->input('completed'),
+        ]);
+
+        return response()->json([
+            'group'   => $item->group,
+            'message' => 'Item completed!'
+        ], 200);
     }
 
     /**

@@ -17,6 +17,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('group_id');
             $table->text('description')->nullable();
+			$table->boolean('completed')->default(false);
             $table->timestamps();
 
             $table->foreign('group_id')
