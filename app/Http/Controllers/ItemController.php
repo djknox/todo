@@ -95,7 +95,7 @@ class ItemController extends Controller
 
         return response()->json([
             'group'   => $item->group,
-            'message' => 'The item was deleted!'
+            'message' => 'Item deleted!'
         ], 200);
     }
 }

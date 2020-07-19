@@ -104,7 +104,7 @@
                     this.reset();
                     this.successMessage = response.data.message;
 
-                    this.$emit('item-added', response.data);
+                    this.$emit('item-added', response);
                 })
                 .catch(error => {
                     this.showSubmittingMessage = false;

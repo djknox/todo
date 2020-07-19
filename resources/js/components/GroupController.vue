@@ -3,11 +3,6 @@
         <group-display
             :initial-group="group">
         </group-display>
-        
-        <add-item-to-group
-            :group="group"
-            v-on:item-added="addItemToGroup">
-        </add-item-to-group>
     </div>
 </template>
 
@@ -27,9 +22,7 @@
             };
         },
         methods: {
-            addItemToGroup (response) {
-                this.group = response.group;
-            },
+            
         },
     }
 </script>

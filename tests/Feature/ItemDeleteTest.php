@@ -32,7 +32,7 @@ class ItemDeleteTest extends TestCase
             ->assertStatus(200)
             ->assertJson([
                 'group'   => $item->group->toArray(),
-                'message' => 'The item was deleted!',
+                'message' => 'Item deleted!',
             ]);
     }
 }

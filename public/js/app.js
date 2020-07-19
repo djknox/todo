@@ -2013,7 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.successMessage = response.data.message;
 
-        _this.$emit('item-added', response.data);
+        _this.$emit('item-added', response);
       })["catch"](function (error) {
         _this.showSubmittingMessage = false;
         _this.errors = error.response.data.errors;
@@ -2059,11 +2059,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "group-controller",
   props: {
@@ -2077,11 +2072,7 @@ __webpack_require__.r(__webpack_exports__);
       group: this.initialGroup
     };
   },
-  methods: {
-    addItemToGroup: function addItemToGroup(response) {
-      this.group = response.group;
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -2095,6 +2086,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2127,7 +2123,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    itemDeleted: function itemDeleted(response) {
+    refreshGroupFromResponse: function refreshGroupFromResponse(response) {
       this.group = response.data.group;
     }
   }
@@ -38056,14 +38052,7 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "card" },
-    [
-      _c("group-display", { attrs: { "initial-group": _vm.group } }),
-      _vm._v(" "),
-      _c("add-item-to-group", {
-        attrs: { group: _vm.group },
-        on: { "item-added": _vm.addItemToGroup }
-      })
-    ],
+    [_c("group-display", { attrs: { "initial-group": _vm.group } })],
     1
   )
 }
@@ -38097,15 +38086,22 @@ var render = function() {
     _c(
       "div",
       { staticClass: "card-body" },
-      _vm._l(_vm.group.items, function(item) {
-        return _c("item-display", {
-          key: item.id,
-          staticClass: "my-4",
-          attrs: { item: item },
-          on: { "item-deleted": _vm.itemDeleted }
+      [
+        _vm._l(_vm.group.items, function(item) {
+          return _c("item-display", {
+            key: item.id,
+            staticClass: "my-4",
+            attrs: { item: item },
+            on: { "item-deleted": _vm.refreshGroupFromResponse }
+          })
+        }),
+        _vm._v(" "),
+        _c("add-item-to-group", {
+          attrs: { group: _vm.group },
+          on: { "item-added": _vm.refreshGroupFromResponse }
         })
-      }),
-      1
+      ],
+      2
     )
   ])
 }

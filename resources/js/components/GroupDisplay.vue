@@ -9,9 +9,14 @@
                 v-for="item of group.items"
                 :key="item.id"
                 :item="item"
-                v-on:item-deleted="itemDeleted"
+                v-on:item-deleted="refreshGroupFromResponse"
                 class="my-4">
             </item-display>
+        
+            <add-item-to-group
+                :group="group"
+                v-on:item-added="refreshGroupFromResponse">
+            </add-item-to-group>
         </div>
     </div>
 </template>
@@ -32,7 +37,7 @@
             };
         },
         methods: {
-            itemDeleted (response) {
+            refreshGroupFromResponse (response) {
                 this.group = response.data.group;
             },
         },
