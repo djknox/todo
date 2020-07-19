@@ -17,6 +17,15 @@ class Group extends Model
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'items'
+    ];
+
+    /**
      * Get the day that the group belongs to.
      */
     public function day()
