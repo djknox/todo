@@ -9,30 +9,30 @@ use Tests\TestCase;
 use App\Group;
 use App\Item;
 
-class ItemStoreTest extends TestCase
+class ItemDeleteTest extends TestCase
 {
     use RefreshDatabase;
 
 
     /**
-     * An item can be added to a group.
+     * An item can be deleted.
      *
      * @test
      * @return void
      */
-    public function an_item_can_be_added_to_a_group()
+    public function an_item_can_be_deleted()
     {
-        $group = factory(Group::class)->create();
         $item = factory(Item::class)->create();
 
-        $response = $this->postJson('/groups/' . $group->id . '/items', [
+        $response = $this->deleteJson('/items/' . $item->id, [
             $item
         ]);
 
         $response
-            ->assertStatus(201)
+            ->assertStatus(200)
             ->assertJson([
-                'message' => 'Item added!',
+                'group'   => $item->group->toArray(),
+                'message' => 'The item was deleted!',
             ]);
     }
 }

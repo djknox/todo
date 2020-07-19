@@ -41,7 +41,12 @@ class ItemController extends Controller
             'description' => $request->input('description'),
         ]);
 
-        return response()->json(['message' => 'Item added!'], 201);
+        $group->load('items');
+
+        return response()->json([
+            'group'   => $group,
+            'message' => 'Item added!'
+        ], 201);
     }
 
     /**
@@ -86,6 +91,11 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+
+        return response()->json([
+            'group'   => $item->group,
+            'message' => 'The item was deleted!'
+        ], 200);
     }
 }
