@@ -25,9 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $today = Day::firstOrCreate([
-        //     'date' => today(),
-        // ]);
         $today = Day::todayOrNew();
 
         return view('home', [
