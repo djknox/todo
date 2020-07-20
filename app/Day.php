@@ -58,10 +58,8 @@ class Day extends Model
                 'date' => today(),
             ]);
 
-            $todoList = Group::create([
-                'day_id' => $today->id,
-                'name'   => 'todo items',
-            ]);
+            Group::createDailyItems($today);
+
             $foodList = Group::create([
                 'day_id' => $today->id,
                 'name'   => 'food',
