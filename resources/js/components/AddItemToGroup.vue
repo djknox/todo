@@ -3,10 +3,8 @@
         <div
             @click="showFormButtonClicked()"
             v-if="!showForm"
-            class="text-center">
-            <button>
-                Add Item
-            </button>
+            class="flex flex-row justify-center">
+            <PlusCircleIcon class="h-8 w-8" />
         </div>
 
         <div v-if="showForm">
@@ -68,8 +66,14 @@
 </template>
 
 <script>
+    import { PlusCircleIcon } from 'vue-feather-icons';
+
     export default {
         name: "add-item-to-group",
+
+        components: {
+            PlusCircleIcon
+        },
 
         props: {
             group: {
