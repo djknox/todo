@@ -8,7 +8,7 @@
             :initial-item="item"
             v-on:item-completed="itemCompleted">
         </item-complete>
-        <h3>
+        <h3 class="text-lg">
             {{ item.description }}
         </h3>
     </div>

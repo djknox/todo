@@ -2,8 +2,8 @@
     <div>
         <button
             @click="showForm = !showForm"
-            class="rounded-full bg-red-300 px-2 py-1 mr-4">
-            x
+            class="rounded-full hover:bg-red-300 px-2 py-1 mr-4">
+            <TrashIcon class="h-4 w-4" />
         </button>
         <div
             v-if="showForm"
@@ -52,6 +52,8 @@
 </template>
 
 <script>
+    import { TrashIcon } from 'vue-feather-icons';
+    
     export default {
         name: "item-delete",
 
@@ -60,6 +62,10 @@
                 required: true,
                 type: Object,
             },
+        },
+
+        components: {
+            TrashIcon
         },
 
         data () {
