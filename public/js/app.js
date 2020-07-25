@@ -2139,6 +2139,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "group-display",
   props: {
@@ -2155,6 +2164,18 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     refreshGroupFromResponse: function refreshGroupFromResponse(response) {
       this.group = response.data.group;
+    }
+  },
+  computed: {
+    completedItems: function completedItems() {
+      return this.group.items.filter(function (item) {
+        return item.completed;
+      });
+    },
+    uncompletedItems: function uncompletedItems() {
+      return this.group.items.filter(function (item) {
+        return !item.completed;
+      });
     }
   }
 });
@@ -2372,6 +2393,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     itemCompleted: function itemCompleted(response) {
       this.$emit('item-completed', response);
+    }
+  },
+  computed: {
+    completedItems: function completedItems() {
+      return this.group.items.filter(function (item) {
+        return item.completed;
+      });
+    },
+    uncompletedItems: function uncompletedItems() {
+      return this.group.items.filter(function (item) {
+        return !item.completed;
+      });
     }
   }
 });
@@ -52591,7 +52624,19 @@ var render = function() {
       "div",
       { staticClass: "card-body" },
       [
-        _vm._l(_vm.group.items, function(item) {
+        _vm._l(_vm.uncompletedItems, function(item) {
+          return _c("item-display", {
+            key: item.id,
+            staticClass: "my-4",
+            attrs: { item: item },
+            on: {
+              "item-deleted": _vm.refreshGroupFromResponse,
+              "item-completed": _vm.refreshGroupFromResponse
+            }
+          })
+        }),
+        _vm._v(" "),
+        _vm._l(_vm.completedItems, function(item) {
           return _c("item-display", {
             key: item.id,
             staticClass: "my-4",

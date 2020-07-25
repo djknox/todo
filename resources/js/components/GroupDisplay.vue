@@ -6,7 +6,16 @@
 
         <div class="card-body">
             <item-display
-                v-for="item of group.items"
+                v-for="item of uncompletedItems"
+                :key="item.id"
+                :item="item"
+                v-on:item-deleted="refreshGroupFromResponse"
+                v-on:item-completed="refreshGroupFromResponse"
+                class="my-4">
+            </item-display>
+
+            <item-display
+                v-for="item of completedItems"
                 :key="item.id"
                 :item="item"
                 v-on:item-deleted="refreshGroupFromResponse"
@@ -40,6 +49,18 @@
         methods: {
             refreshGroupFromResponse (response) {
                 this.group = response.data.group;
+            },
+        },
+        computed: {
+            completedItems () {
+                return this.group.items.filter(function (item) {
+                    return item.completed;
+                });
+            },
+            uncompletedItems () {
+                return this.group.items.filter(function (item) {
+                    return !item.completed;
+                });
             },
         },
     }

@@ -37,5 +37,17 @@
                 this.$emit('item-completed', response);
             },
         },
+        computed: {
+            completedItems () {
+                return this.group.items.filter(function (item) {
+                    return item.completed;
+                });
+            },
+            uncompletedItems () {
+                return this.group.items.filter(function (item) {
+                    return !item.completed;
+                });
+            },
+        },
     }
 </script>
