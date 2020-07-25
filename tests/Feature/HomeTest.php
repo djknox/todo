@@ -24,6 +24,6 @@ class HomeTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSeeText(today()->toFormattedDateString());
+        $response->assertSeeText(today()->format('F jS, Y'));
     }
 }
