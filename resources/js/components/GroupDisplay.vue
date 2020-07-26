@@ -1,7 +1,11 @@
 <template>
     <div>
-        <div class="card-header">
+        <div class="card-header flex flex-row items-center">
             {{ group.name }}
+            <completion-display
+                :completion-percentage="completionPercentage"
+                class="ml-2">
+            </completion-display>
         </div>
 
         <div class="card-body">
@@ -61,6 +65,13 @@
                 return this.group.items.filter(function (item) {
                     return !item.completed;
                 });
+            },
+            completionPercentage () {
+                let numTotalItems = this.group.items.length;
+                let numCompletedItems = this.completedItems.length;
+                let completionPercentage = (numCompletedItems / numTotalItems ) * 100;
+
+                return completionPercentage;
             },
         },
     }
