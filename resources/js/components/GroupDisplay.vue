@@ -9,23 +9,11 @@
         </div>
 
         <div class="card-body">
-            <item-display
-                v-for="item of uncompletedItems"
-                :key="item.id"
-                :item="item"
+            <items-display
+                :items="group.items"
                 v-on:item-deleted="refreshGroupFromResponse"
-                v-on:item-completed="refreshGroupFromResponse"
-                class="my-4">
-            </item-display>
-
-            <item-display
-                v-for="item of completedItems"
-                :key="item.id"
-                :item="item"
-                v-on:item-deleted="refreshGroupFromResponse"
-                v-on:item-completed="refreshGroupFromResponse"
-                class="my-4">
-            </item-display>
+                v-on:item-completed="refreshGroupFromResponse">
+            </items-display>
         
             <add-item-to-group
                 :group="group"

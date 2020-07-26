@@ -23,6 +23,7 @@ window.Vue = require('vue');
 
 Vue.component('group-display', require('./components/GroupDisplay.vue').default);
 Vue.component('item-display', require('./components/ItemDisplay.vue').default);
+Vue.component('items-display', require('./components/ItemsDisplay.vue').default);
 Vue.component('add-item-to-group', require('./components/AddItemToGroup.vue').default);
 Vue.component('item-delete', require('./components/ItemDelete.vue').default);
 Vue.component('item-complete', require('./components/ItemComplete.vue').default);
